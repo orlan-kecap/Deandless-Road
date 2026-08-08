@@ -140,7 +140,7 @@ Applying ${DEVICE}_defconfig
 \`\`\`
 ⏳ delok konfigurasi kernel..."
 
-make O="$OUT" ARCH=arm64 LLVM=1 CROSS_COMPILE=aarch64-linux-gnu- courbet_defconfig
+make O="$OUT" ARCH=arm64 courbet_defconfig
 
 # ── Step 3: Compile ──────────────────────────────────────────────
 echo "[3/4] Compiling kernel..."
@@ -164,6 +164,7 @@ make -j$(nproc --all) \
     O="$OUT" \
     ARCH=arm64 \
     LLVM=1 \
+    LLVM_IAS=1 \
     CROSS_COMPILE=aarch64-linux-gnu- \
     CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
     2>&1 | tee build.log
